@@ -64,7 +64,8 @@ PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
-INSERT INTO scrapers(name,link,timeout,last_request) VALUES ('HabrRu','http://habr:8010/get/news','10','0');
+INSERT INTO scrapers(name,link,timeout,last_request) VALUES ('HabrRu','http://habrru:8010/get/news','10','0');
+INSERT INTO scrapers(name,link,timeout,last_request) VALUES ('HabrEng','http://habreng:8020/get/news','10','0');
 INSERT INTO scrapers(name,link,timeout,last_request) VALUES ('Midjourney','http://midjourney:9020/get/news','60','0');
 
 
