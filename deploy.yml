@@ -1,0 +1,30 @@
+---
+- hosts: all
+  gather_facts: true
+  vars:
+    app_path      : /opt/fusion-database
+    service_name  : fusion-database
+    container_name: db
+
+  tasks:
+    - name : "create {{ app_path }}/"
+      file:
+        path : "{{ app_path }}/"
+        state: "directory"
+        mode : 0775
+      become       : yes
+      become_method: sudo
+
+    - name : "stop service"
+      shell: sudo docker stop {{container_name}}
+      ignore_errors: yes
+
+    - name : "pull image"
+      shell: sudo docker pull coolenov/{{service_name}}:latest
+
+    - name : "start service"
+      shell: sudo docker run --rm -d -e LANG=C.UTF-8 --name {{container_name}} coolenov/{{service_name}}:latest
+
+    - name : "connect service to docker-network"
+      shell: sudo docker network connect net {{container_name}}
+
