@@ -4,7 +4,7 @@
   vars:
     app_path      : /opt/fusion-database
     service_name  : fusion-database
-    container_name: database
+    container_name: fdatabase
 
   tasks:
     - name : "create {{ app_path }}/"
