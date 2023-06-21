@@ -29,6 +29,6 @@
     - name : "start service"
       shell: sudo docker run --rm -d -p 30000:3306 -e LANG=C.UTF-8 --name {{container_name}} coolenov/{{service_name}}:latest
 
-#    - name : "connect service to docker-network"
-#      shell: sudo docker network connect net {{container_name}}
+    - name : "connect service to docker-network"
+      shell: sudo docker network connect net {{container_name}}
 
